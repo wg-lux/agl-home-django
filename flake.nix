@@ -1,6 +1,6 @@
 {
   description = "Application packaged using poetry2nix";
-
+# ../lib/python3.11/site-packages/agl_home_django/manage.py
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -15,12 +15,12 @@
       let
         # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
         pkgs = nixpkgs.legacyPackages.${system};
-        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication; # or mkPoetryScriptsPackage or mkPoetryApplication
+        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryScriptsPackage; # or mkPoetryScriptsPackage or mkPoetryApplication
       in
       {
         
         packages = {
-          agl-home-django = mkPoetryApplication { projectDir = self; }; # mkPoetryScriptsPackage or mkPoetryApplication
+          agl-home-django = mkPoetryScriptsPackage { projectDir = self; }; # mkPoetryScriptsPackage or mkPoetryApplication
           default = self.packages.${system}.agl-home-django;
         };
 
