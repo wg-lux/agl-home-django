@@ -1,5 +1,5 @@
-nix-agl-home-django/
-.direnv/
+# nix-agl-home-django/
+# .direnv/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
