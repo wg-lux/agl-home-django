@@ -30,7 +30,7 @@
           # default = self.packages.${system}.agl-home-django;
           default = mkPoetryEnv {
             projectDir = ./.;
-            python = pkgs.python311;
+            python = pkgs.python310;
           };
         };
 
