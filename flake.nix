@@ -15,18 +15,22 @@
       let
         # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
         pkgs = nixpkgs.legacyPackages.${system};
-        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryScriptsPackage; # or mkPoetryScriptsPackage or mkPoetryApplication
+        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication; # or mkPoetryScriptsPackage or mkPoetryApplication
       in
       {
         
         packages = {
-          agl-home-django = mkPoetryScriptsPackage { projectDir = self; }; # mkPoetryScriptsPackage or mkPoetryApplication
+          agl-home-django = mkPoetryApplication { 
+            projectDir = self;
+            python = pkgs.python311;
+
+          }; # mkPoetryScriptsPackage or mkPoetryApplication
           default = self.packages.${system}.agl-home-django;
         };
 
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self.packages.${system}.agl-home-django ];
-          packages = [ pkgs.poetry pkgs.django ];
+          packages = [ pkgs.python pkgs.poetry pkgs.django ];
         };
       });
 }
