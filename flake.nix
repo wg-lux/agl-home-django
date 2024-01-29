@@ -15,23 +15,32 @@
       let
         # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
         pkgs = nixpkgs.legacyPackages.${system};
-        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication; # or mkPoetryScriptsPackage or mkPoetryApplication
+        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryEnv;
+        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication ; # or mkPoetryScriptsPackage or mkPoetryApplication
       in
       {
         
         packages = {
           agl-home-django = mkPoetryApplication { 
-            projectDir = self;
+            projectDir = ./.;
             python = pkgs.python311;
 
           }; # mkPoetryScriptsPackage or mkPoetryApplication
-          default = self.packages.${system}.agl-home-django;
+
+          # default = self.packages.${system}.agl-home-django;
+          default = mkPoetryEnv {
+            projectDir = ./.;
+            python = pkgs.python311;
+          };
         };
 
-        devShells.default = pkgs.mkShell {
-          inputsFrom = [ self.packages.${system}.agl-home-django ];
-          packages = [ pkgs.python pkgs.poetry pkgs.django ];
-        };
+        # devShells.default = pkgs.mkShell {
+        #   inputsFrom = [ self.packages.${system}.agl-home-django ];
+        #   packages = [ pkgs.python pkgs.poetry pkgs.django ];
+        # };
+
+      devShells.default = self.packages.${system}.pythonEnv;
+
       });
 }
 
