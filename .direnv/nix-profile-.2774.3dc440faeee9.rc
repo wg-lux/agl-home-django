@@ -43,7 +43,7 @@ NIX_ENFORCE_NO_NATIVE='1'
 export NIX_ENFORCE_NO_NATIVE
 NIX_HARDENING_ENABLE='fortify fortify3 stackprotector pic strictoverflow format relro bindnow'
 export NIX_HARDENING_ENABLE
-NIX_LDFLAGS='-rpath /home/agl-admin/services/agl-home-django/outputs/out/lib  -L/nix/store/qp5zys77biz7imbk6yy85q5pdv7qk84j-python3-3.11.6/lib -L/nix/store/qp5zys77biz7imbk6yy85q5pdv7qk84j-python3-3.11.6/lib'
+NIX_LDFLAGS='-rpath /home/agl-admin/agl-home-django/outputs/out/lib  -L/nix/store/qp5zys77biz7imbk6yy85q5pdv7qk84j-python3-3.11.6/lib -L/nix/store/qp5zys77biz7imbk6yy85q5pdv7qk84j-python3-3.11.6/lib'
 export NIX_LDFLAGS
 NIX_NO_SELF_RPATH='1'
 NIX_STORE='/nix/store'
@@ -144,7 +144,7 @@ name='nix-shell-env'
 export name
 nativeBuildInputs=''
 export nativeBuildInputs
-out='/home/agl-admin/services/agl-home-django/outputs/out'
+out='/home/agl-admin/agl-home-django/outputs/out'
 export out
 outputBin='out'
 outputDev='out'
@@ -175,7 +175,7 @@ preConfigurePhases=' updateAutotoolsGnuConfigScriptsPhase'
 declare -a preFixupHooks=('_moveToShare' '_multioutDocs' '_multioutDevs' )
 preferLocalBuild='1'
 export preferLocalBuild
-prefix='/home/agl-admin/services/agl-home-django/outputs/out'
+prefix='/home/agl-admin/agl-home-django/outputs/out'
 declare -a propagatedBuildDepFiles=('propagated-build-build-deps' 'propagated-native-build-inputs' 'propagated-build-target-deps' )
 propagatedBuildInputs=''
 export propagatedBuildInputs

@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 set -e
-if [[ ! -d "/home/agl-admin/services/agl-home-django" ]]; then
+if [[ ! -d "/home/agl-admin/agl-home-django" ]]; then
   echo "Cannot find source directory; Did you move it?"
-  echo "(Looking for "/home/agl-admin/services/agl-home-django")"
+  echo "(Looking for "/home/agl-admin/agl-home-django")"
   echo 'Cannot force reload with this script - use "direnv reload" manually and then try again'
   exit 1
 fi
 
 # rebuild the cache forcefully
-_nix_direnv_force_reload=1 direnv exec "/home/agl-admin/services/agl-home-django" true
+_nix_direnv_force_reload=1 direnv exec "/home/agl-admin/agl-home-django" true
 
 # Update the mtime for .envrc.
 # This will cause direnv to reload again - but without re-building.
-touch "/home/agl-admin/services/agl-home-django/.envrc"
+touch "/home/agl-admin/agl-home-django/.envrc"
 
 # Also update the timestamp of whatever profile_rc we have.
 # This makes sure that we know we are up to date.
-touch -r "/home/agl-admin/services/agl-home-django/.envrc" "/home/agl-admin/services/agl-home-django/.direnv"/*.rc
+touch -r "/home/agl-admin/agl-home-django/.envrc" "/home/agl-admin/agl-home-django/.direnv"/*.rc
