@@ -7,15 +7,13 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python =  ">3.10,<3.13"
+python =  "^3.11"
 # Django = "^5.0.1"
 # opencv-python = "~4"
 # ffmpeg-python = "^0.2.0"
 python-dotenv = "^1.0.1"
-pyyaml = "^6.0.1"
-django-bootstrap5 = "^23.4"
-agl-base-db = "^0.1.53"
 opencv-python = "^4.9.0.80"
+endo-reg-db = "^0.1.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
@@ -25,5 +23,3 @@ poetry = "^1.7.1"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry.scripts]
-start-server = "agl_home_django.runserver:start_django"
