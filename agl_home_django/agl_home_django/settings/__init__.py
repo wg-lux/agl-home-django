@@ -13,34 +13,28 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from os import environ
 from .base import *
-from .yaml_path import yaml_path
-import yaml
 
-# Read yaml file
-with open(yaml_path) as file:
-    yaml_data = yaml.load(file, Loader=yaml.FullLoader)
+# read secret key from txt file located in
 
-    # Set environment variables
-    for key, value in yaml_data.items():
-        environ[key] = value
+
 
 # Load environment variables from .env file
 # The .env file should be located in the same directory as this settings file
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+SECRET_PATH = BASE_DIR.parent / ".env/secret"
+SECRET_KEY = open(SECRET_PATH).read().strip()
 
-DEV_ENV = environ.get('DEV_ENV')
+# DEV_ENV = environ.get('DEV_ENV')
+DEV_ENV = True
 DEBUG = DEV_ENV
 
-# We load the secret key from the environment to not have it in /nix/store.
-SECRET_KEY=environ.get('SECRET_KEY')
-
 # The static root will be a path under /nix/store/ which we don't know yet.
-STATIC_ROOT=environ.get('STATIC_ROOT')
+STATIC_ROOT="static/" # environ.get('STATIC_ROOT')
 
 # Allowed hosts are provided via nix config
-ALLOWED_HOSTS = list(environ.get('ALLOWED_HOSTS', default='').split(','))
+ALLOWED_HOSTS = ["*"] # list(environ.get('ALLOWED_HOSTS', default='').split(','))
 
 # Application definition
 ROOT_URLCONF = 'agl_home_django.urls'
