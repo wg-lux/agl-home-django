@@ -1,1 +1,0 @@
-yaml_path = "/home/agl-admin/.config/agl-home-django.yaml"

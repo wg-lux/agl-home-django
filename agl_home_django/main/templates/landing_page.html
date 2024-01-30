@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Introduction / Welcome Message -->
+    <section id="welcome">
+        <div class="text-center">
+            <h1>Welcome to EndoReg</h1>
+            <p>Revolutionizing gastrointestinal endoscopy data collection and analysis.</p>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- About the Project -->
+    <section id="about">
+        <div class="my-5">
+            <h2 class="section-header">About EndoReg</h2>
+            <p>EndoReg is a comprehensive platform aimed at creating a multicentric database for gastrointestinal endoscopy videos and reports. Our mission is to develop an efficient framework for easy data collection, processing, merging, and anonymization to facilitate research and medical advancements.</p>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- Features and Benefits -->
+    <section id="features">
+        <div class="row my-5">
+            <div class="col-md-4">
+                <h2 class="section-header">Open Source</h2>
+                <p>Collaborate and contribute in a transparent environment.</p>
+            </div>
+            <div class="col-md-4">
+                <h2 class="section-header">Easy to Contribute</h2>
+                <p>Contribute and access data effortlessly, fostering global research collaboration.</p>
+            </div>
+            <div class="col-md-4">
+                <h2 class="section-header">Standardized Database</h2>
+                <p>Clinically focused database design ensuring high-quality and relevant data.</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- Call to Action -->
+    
+    {% if user.is_authenticated %}
+    {% else %}
+        <section id="cta">
+            <div class="text-center my-5">
+                <h2 class="section-header">Get Started with EndoReg</h2>
+                <p>Sign up for demo access and be a part of this innovative journey.</p>
+                <a href="{% url 'register' %}" class="btn btn-primary">Sign Up for Demo Access</a>            
+            </div>
+            <div class="section-divider"></div>
+        </section>
+    {% endif %}
+{% endblock content %}

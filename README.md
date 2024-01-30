@@ -9,3 +9,7 @@
 
 ## Build Docker Container
 'nix build .#dockerImages.x86_64-linux.agl-home-django'
+
+# FAQ
+## Run during development (NixOS)
+- Use poetry shell ('poetry shell')
