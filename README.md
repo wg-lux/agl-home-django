@@ -13,3 +13,10 @@
 # FAQ
 ## Run during development (NixOS)
 - Use poetry shell ('poetry shell')
+
+## Troubleshooting
+### nix build not working
+- check whether poetry.lock and pyproject.toml are in sync, useful commands:
+    - poetry lock --no-update
+    - poetry lock
+    - poetry update

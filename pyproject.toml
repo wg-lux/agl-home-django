@@ -12,12 +12,11 @@ python =  "^3.11"
 # opencv-python = "~4"
 # ffmpeg-python = "^0.2.0"
 python-dotenv = "^1.0.1"
-opencv-python = "^4.9.0.80"
-endo-reg-db = "^0.1.0"
+pillow = "^10.2.0"
+endo-reg-db = "^0.1.6"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
-poetry = "^1.7.1"
 
 [build-system]
 requires = ["poetry-core"]
