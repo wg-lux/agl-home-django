@@ -13,12 +13,12 @@ python =  "^3.11"
 # ffmpeg-python = "^0.2.0"
 python-dotenv = "^1.0.1"
 pillow = "^10.2.0"
-endo-reg-db = "^0.1.6"
+# endo-reg-db = "^0.1.6"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core", "setuptools", "wheel"]
 build-backend = "poetry.core.masonry.api"
 
