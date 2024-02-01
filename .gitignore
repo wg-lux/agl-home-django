@@ -1,6 +1,7 @@
-nix-agl-home-django*
+nix-agl-home-django/*
 .direnv/*
 *decrypted~*
+result/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
