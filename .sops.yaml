@@ -1,0 +1,12 @@
+keys:
+  - &primary age14mw7yzu27udf88qvv8qz3rzsn87wndmgssxz36ug0wxrsu8dy34s49sdet
+  # - &agl-server-02
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+  # - path_regex: secrets/secrets.yaml$
+    key_groups:
+      - age:
+        - *primary
+      # pgp: #IMPORTANT, only first key group has leading " - " in nix-sops
+      # - *some_other_key

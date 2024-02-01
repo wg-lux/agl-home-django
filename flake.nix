@@ -23,14 +23,16 @@
             projectDir = ./.;
             python = pkgs.python311;
             extraPackages = ps: with ps; [
+              pkgs.python311Packages.poetry-core
               # pkgs.python311Packages.opencv4
             ];
           };
         };
 
         devShells.default = pkgs.mkShell {
-          packages = [ 
-            pkgs.poetry
+          # buildInputs = [ 
+          packages = with pkgs; [
+            python311
           ];
         };
       }
