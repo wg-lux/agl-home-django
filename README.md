@@ -20,3 +20,6 @@
     - poetry lock --no-update
     - poetry lock
     - poetry update
+
+# TODO 
+- [ ] (not really necessary since we can just use poetry) Somehow manage production and dev smart. The problem we need to solve: For a working nix dev env of packages we need to import non-nix-packaged modules in our flake postShellHook; for working and testing releases we need to add them in our pyproject.toml file 

@@ -1,5 +1,7 @@
 nix-agl-home-django/*
-.direnv/*
+.direnv/
+.venv
+data/
 *decrypted~*
 result/*
 
