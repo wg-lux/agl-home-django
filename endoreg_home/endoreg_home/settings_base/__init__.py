@@ -17,6 +17,10 @@ from .internationalization import LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+ALLOWED_HOSTS = [
+    "*"
+    # 'endo-reg.net', 'www.endo-reg.net'
+]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/

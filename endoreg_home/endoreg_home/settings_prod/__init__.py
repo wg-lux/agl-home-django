@@ -5,7 +5,6 @@ SECRET_KEY = 'your_prod_secret_key'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['endo-reg.net', 'www.endo-reg.net']
 
 # Production database
 DATABASES = {
