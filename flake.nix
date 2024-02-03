@@ -60,6 +60,7 @@
 
             # Define Environment Variables
             TEST_VAR = "test";
+            DJANGO_SETTINGS_MODULE="endoreg_home.settings_dev";
 
             # Setup external datasources
             # shellHook = ''
@@ -71,7 +72,7 @@
               mkdir -p data
               ln -snf ${tennis-data}/atp_matches_2020.csv data/dataset.csv
 
-              pip install --upgrade 
+              pip install --upgrade pip
               poetry update
             '';
           };

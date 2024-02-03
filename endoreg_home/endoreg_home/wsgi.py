@@ -1,5 +1,5 @@
 """
-WSGI config for agl_home_django project.
+WSGI config for endoreg_home project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'agl_home_django.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'endoreg_home.settings')
 
 application = get_wsgi_application()
