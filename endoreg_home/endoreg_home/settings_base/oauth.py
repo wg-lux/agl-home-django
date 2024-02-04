@@ -31,7 +31,7 @@ ALLOW_LOGOUT_GET_METHOD = True
 AUTHENTICATION_BACKENDS = [
     'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
     'user_authentication.models.MyOIDCBackend',
-    "rest_framework.authentication.SessionAuthentication"
+    # "rest_framework.authentication.SessionAuthentication"
 ]
 
 ##### Other settings
