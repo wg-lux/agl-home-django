@@ -13,19 +13,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from .static import STATIC_URL
 from .internationalization import LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ
+from .oauth import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ALLOWED_HOSTS = [
-    "*"
-    # 'endo-reg.net', 'www.endo-reg.net'
-]
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-ALLOWED_HOSTS = ["home.endo-reg.net"]
 
 WSGI_APPLICATION = 'endoreg_home.wsgi.application'
 
@@ -38,6 +32,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Docs: https://django-oidc-provider.readthedocs.io/en/master/sections/installation.html#quick-installation
+    "mozilla_django_oidc", # keycloak oauth 
+    "django_bootstrap5",
+    "user_authentication.apps.UserAuthenticationConfig",
+    "content_management.apps.ContentManagementConfig",
+
 ]
 
 MIDDLEWARE = [

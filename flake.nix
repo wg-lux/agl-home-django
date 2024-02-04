@@ -74,6 +74,8 @@
 
               pip install --upgrade pip
               poetry update
+
+              export DJANGO_SECRET_KEY=$(cat .env/secret)
             '';
           };
 
