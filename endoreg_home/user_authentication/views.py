@@ -22,9 +22,6 @@ ENDOREG_HOME_URL = settings.ENDOREG_HOME_URL
 def user_status(request):
     user = request.user
 
-    logger.warning("TRYING TO GET CUSTOM DATA")
-    logger.warning(user.info)
-
     context = {
         'is_authenticated': user.is_authenticated,
         # 'roles': user.get_roles() if hasattr(user, 'get_roles') else [],
