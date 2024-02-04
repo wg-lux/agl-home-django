@@ -14,6 +14,8 @@ from pathlib import Path
 from .static import STATIC_URL
 from .internationalization import LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ
 from .oauth import *
+from .logging_conf import LOGGING
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "rest_framework",
 
     # Docs: https://django-oidc-provider.readthedocs.io/en/master/sections/installation.html#quick-installation
     "mozilla_django_oidc", # keycloak oauth 
@@ -41,13 +44,18 @@ INSTALLED_APPS = [
 
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [ # MIDDLEWARE ORDER IS RELEVANT
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # "keycloak_oidc.middleware.OIDCMiddleware",
     'django.contrib.messages.middleware.MessageMiddleware',
+    
+    # REQUIRED FOR OAUTH
+    "mozilla_django_oidc.middleware.SessionRefresh",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 

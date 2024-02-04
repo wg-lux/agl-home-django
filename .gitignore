@@ -4,6 +4,7 @@ nix-agl-home-django/*
 data/
 *decrypted~*
 result/*
+endoreg_home/user_authentication/migrations/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

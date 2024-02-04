@@ -1,0 +1,12 @@
+{
+    "realm": "master",
+    "auth-server-url": "https://keycloak.endo-reg.net/",
+    "ssl-required": "external",
+    "resource": "agl-home-django",
+    "verify-token-audience": true,
+    "credentials": {
+      "secret": "2tkBiwvwIIJEofbQqiGcmzw1T3eiJZK0"
+    },
+    "use-resource-role-mappings": true,
+    "confidential-port": 0
+  }

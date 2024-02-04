@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>User Status</h2>
+    <p><strong>Login Status:</strong> {% if user.is_authenticated %} Logged In {% else %} Logged Out {% endif %}</p>
+    {% if user.is_authenticated %}
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        {% if user.info %}
+            <p><strong>Roles:</strong> {{ user.info.roles }}</p>
+            <!-- Display any other information from UserInformation model -->
+        {% else %}
+            <p>No additional information available.</p>
+        {% endif %}
+    {% else %}
+        <p>You are not logged in.</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <p>Current user: {{ user.email }}</p> 
+        <form action="{% url 'oidc_logout' %}" method="post"> 
+            {% csrf_token %}
+            <input type="submit" value="logout"> 
+        </form>
+    {% else %}
+        <a href="{% url 'oidc_authentication_init' %}">Login</a> 
+    {% endif %}
+
+
+        {% comment %} Implement Force ReAuth button as form with csrf token{% endcomment %}
+        
+        
+</div>
+{% endblock content %}
