@@ -3,12 +3,14 @@ import os
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+print(f"CHECK SECRET KEYYYY: {SECRET_KEY}")
 
 DEBUG = False
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "home.endo-reg.net"
+    "home.endo-reg.net",
+    "*.endo-reg.net"
 ]
 
 SECURE_SSL_REDIRECT = True

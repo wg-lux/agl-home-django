@@ -76,6 +76,14 @@
               poetry update
 
               export DJANGO_SECRET_KEY=$(cat .env/secret)
+              export KEYCLOAK_CLIENT=$(cat .env/keycloak-client)
+              export KEYCLOAK_SECRET=$(cat .env/keycloak-secret)
+
+              # print out the environment variables
+              echo "DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY"
+              echo "KEYCLOAK_CLIENT: $KEYCLOAK_CLIENT"
+              echo "KEYCLOAK_SECRET: $KEYCLOAK_SECRET"
+
             '';
           };
 

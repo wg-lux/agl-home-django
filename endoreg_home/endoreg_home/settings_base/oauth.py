@@ -1,3 +1,5 @@
+import os
+
 KEYCLOAK_BASE_URL = 'https://keycloak.endo-reg.net/realms/master/protocol/openid-connect'
 ENDOREG_HOME_URL = 'https://home.endo-reg.net'
 
@@ -8,8 +10,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # ADD mozilla_django_oidc.middleware.SessionRefresh to MIDDLEWARE
 
-OIDC_RP_CLIENT_ID = 'agl-home-django'
-OIDC_RP_CLIENT_SECRET = '2tkBiwvwIIJEofbQqiGcmzw1T3eiJZK0' #TODO make production safe
+OIDC_RP_CLIENT_ID = os.environ.get('KEYCLOAK_CLIENT', 'agl-home-django')
+OIDC_RP_CLIENT_SECRET = os.environ.get('KEYCLOAK_SECRET', 'agl-home-django') #TODO make production safe
 
 # The URL of your Keycloak server, with your realm name
 OIDC_OP_AUTHORIZATION_ENDPOINT = f'{KEYCLOAK_BASE_URL}/auth'
