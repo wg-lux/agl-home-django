@@ -22,6 +22,7 @@ from user_authentication.urls import urlpatterns as user_authentication_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
 ]
 
 urlpatterns += content_management_urls

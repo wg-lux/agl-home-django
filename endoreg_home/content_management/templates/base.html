@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+{% load socialaccount %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,11 +63,18 @@
                     
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'landing_page' %}">Logout</a>
+                            {% comment %} <a class="nav-link" href="{% url 'landing_page' %}">Logout</a> {% endcomment %}
+                            <form action="{% url 'account_logout' %}" method="post">
+                                {% csrf_token %}
+                                <input class="btn btn-danger" type="submit" value="Logout">
+                            </form>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'landing_page' %}">Login</a>
+                            <form action="{% provider_login_url 'keycloak' action='reauthenticate' %}" method="post">
+                                {% csrf_token %}
+                                <input class="btn btn-primary" type="submit" value="Login">
+                            </form>
                         </li>
                     {% endif %}
                 </ul>

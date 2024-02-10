@@ -26,15 +26,10 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
-        # 'mozilla_django_oidc': {
-        #     'handlers': ['console', 'file'],
-        #     'level': 'DEBUG',
-        #     'propagate': False,
-        # },
-        # 'my_oidc_backend': {
-        #     'handlers': ['console', 'file'],
-        #     'level': 'DEBUG',
-        #     'propagate': False,
-        # },
+        "authentication": {
+            "handlers": ["console", "file"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
     },
 }

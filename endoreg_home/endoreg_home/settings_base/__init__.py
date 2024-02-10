@@ -14,6 +14,7 @@ from pathlib import Path
 from .static import STATIC_URL, STATIC_ROOT
 from .internationalization import LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ
 from .logging_conf import LOGGING
+from .oauth import *
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,6 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 WSGI_APPLICATION = 'endoreg_home.wsgi.application'
+SITE_ID = 1
 
 # Application definition
 
@@ -33,8 +35,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     "rest_framework",
     "django_bootstrap5",
+
+    # django-allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.openid_connect',
+    'allauth.usersessions',
+    # keycloak extension
+    # "allauth_keycloak_ext",
+
     "user_authentication.apps.UserAuthenticationConfig",
     "content_management.apps.ContentManagementConfig",
 
@@ -44,13 +57,19 @@ MIDDLEWARE = [ # MIDDLEWARE ORDER IS RELEVANT
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'allauth.usersessions.middleware.UserSessionsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "allauth.account.middleware.AccountMiddleware",
 ]
+
+
+
 
 ROOT_URLCONF = 'endoreg_home.urls'
 
