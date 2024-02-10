@@ -309,6 +309,20 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-cookiebanner"
+version = "0.2.8"
+description = ""
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "django_cookiebanner-0.2.8-py3-none-any.whl", hash = "sha256:4a4f949825f9fd047e0e177a964c49d51bfbc0f0279e9ce0968bc189737a3795"},
+    {file = "django_cookiebanner-0.2.8.tar.gz", hash = "sha256:fe2ba06f5199aa88aa37c5f615a9da66db7a8325990535db67ac315d27f5a339"},
+]
+
+[package.dependencies]
+django = ">=3.2"
+
+[[package]]
 name = "djangorestframework"
 version = "3.14.0"
 description = "Web APIs for Django, made easy."
@@ -626,4 +640,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "edf25e43cf1e1ee4f9ebd4a3efb3aad7b06d35c6963a8a82e0736ecfd3705323"
+content-hash = "66ee7662a36909e2a9b8a1fe12d5fe83377997af45493b32804417dc4c3a15ef"

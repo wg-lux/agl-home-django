@@ -2,6 +2,8 @@
 <html lang="en">
     
 {% load socialaccount %}
+{% load cookiebanner %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,6 +43,7 @@
     
 </head>
 <body>
+    {% cookiebanner_modal 'vanilla' %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'landing_page' %}">EndoReg</a>
@@ -92,6 +95,10 @@
                     <span>&copy; 2024 EndoReg - All rights reserved.</span>
                 </div>
                 <div class="col-lg d-flex justify-content-center justify-content-lg-end">
+                    <button onclick="document.querySelector('#cookiebannerModal').classList.remove('hidden')">Change cookie preferences</button>
+                </div>
+                <div class="col-lg d-flex justify-content-center justify-content-lg-end">
+                    <a href="{% url 'privacy' %}" class="mx-2">Privacy Policy</a>
                     <a href="{% url 'about_us' %}" class="mx-2">About Us</a>
                     {% comment %} <a href="{% url 'funding' %}" class="mx-2">Funding</a> {% endcomment %}
                     <a href="{% url 'impressum' %}" class="mx-2">Impressum</a>

@@ -15,6 +15,7 @@ from .static import STATIC_URL, STATIC_ROOT
 from .internationalization import LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ
 from .logging_conf import LOGGING
 from .oauth import *
+from .cookiebanner import *
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -47,6 +48,9 @@ INSTALLED_APPS = [
     'allauth.usersessions',
     # keycloak extension
     # "allauth_keycloak_ext",
+
+    # cookie-banner
+    "cookiebanner",
 
     "user_authentication.apps.UserAuthenticationConfig",
     "content_management.apps.ContentManagementConfig",

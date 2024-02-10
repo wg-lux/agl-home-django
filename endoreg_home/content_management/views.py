@@ -18,5 +18,8 @@ def impressum(request):
 def about_us(request):
     return render(request, "about/about_us.html")
 
+def privacy(request):
+    return render(request, "about/privacy.html")
+
 def coloreg_security_concept(request):
     return render(request, "coloreg/security_concept.html")
