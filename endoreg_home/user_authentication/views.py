@@ -7,16 +7,12 @@ from django.urls import reverse
 import logging
 
 # Create a logger for your OIDC backend
-logger = logging.getLogger('my_oidc_backend')
-
-
-
 # Create your views here.
-# KEYCLOAK_BASE_URL = 'https://keycloak.endo-reg.net/realms/master/protocol/openid-connect'
-# ENDOREG_HOME_URL = 'https://home.endo-reg.net'
+KEYCLOAK_BASE_URL = 'https://keycloak.endo-reg.net/realms/master/protocol/openid-connect'
+ENDOREG_HOME_URL = 'https://home.endo-reg.net'
 
-KEYCLOAK_BASE_URL = settings.KEYCLOAK_BASE_URL
-ENDOREG_HOME_URL = settings.ENDOREG_HOME_URL
+# KEYCLOAK_BASE_URL = settings.KEYCLOAK_BASE_URL
+# ENDOREG_HOME_URL = settings.ENDOREG_HOME_URL
 
 # @login_required
 def user_status(request):

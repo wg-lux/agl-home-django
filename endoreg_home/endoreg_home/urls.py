@@ -22,8 +22,6 @@ from user_authentication.urls import urlpatterns as user_authentication_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('oidc/', include('mozilla_django_oidc.urls')),
-
 ]
 
 urlpatterns += content_management_urls

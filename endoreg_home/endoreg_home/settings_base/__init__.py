@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from .static import STATIC_URL, STATIC_ROOT
 from .internationalization import LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ
-from .oauth import *
 from .logging_conf import LOGGING
 
 
@@ -35,9 +34,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",
-
-    # Docs: https://django-oidc-provider.readthedocs.io/en/master/sections/installation.html#quick-installation
-    "mozilla_django_oidc", # keycloak oauth 
     "django_bootstrap5",
     "user_authentication.apps.UserAuthenticationConfig",
     "content_management.apps.ContentManagementConfig",
@@ -51,11 +47,8 @@ MIDDLEWARE = [ # MIDDLEWARE ORDER IS RELEVANT
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # "keycloak_oidc.middleware.OIDCMiddleware",
     'django.contrib.messages.middleware.MessageMiddleware',
     
-    # REQUIRED FOR OAUTH
-    "mozilla_django_oidc.middleware.SessionRefresh",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 

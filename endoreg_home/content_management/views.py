@@ -1,7 +1,5 @@
 from django.shortcuts import render
 
-from logging import getLogger
-logger = getLogger("my_oidc_backend")
 
 # Create your views here.
 def landing_page(request):
