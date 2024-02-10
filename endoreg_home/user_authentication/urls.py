@@ -6,8 +6,6 @@ from . import views
 
 urlpatterns = [
     path('user-status/', views.user_status, name='user_status'),
-    path('logout/', LogoutView.as_view(), name='logout'),
-    path('keycloak-logout/', views.keycloak_logout, name='keycloak_logout'),
-    path("force-reauth/", views.force_reauth, name="force_reauth"),
+    path('test-auth-view/', views.test_auth_view, name='test_auth_view'),
     path("redirect-after-logout/", views.redirect_after_logout, name="redirect_after_logout"),
 ]

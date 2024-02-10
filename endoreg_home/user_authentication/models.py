@@ -12,16 +12,13 @@ logger = logging.getLogger("authentication")
 @receiver(pre_social_login)
 def handle_keycloak_roles(sender, request, sociallogin, **kwargs):
     # Assuming the roles are in sociallogin.account.extra_data['roles']
-    logger.debug("----PRE SOCIAL LOGIN CALLED----")
-    logger.debug(f"Social login data: {sociallogin.account.extra_data}")
+    # logger.debug("----PRE SOCIAL LOGIN CALLED----")
+    # logger.debug(f"Social login data: {sociallogin.account.extra_data}")
     keycloak_groups = sociallogin.account.extra_data.get('groups', [])
     
     user = sociallogin.user
 
-    # # Check if the user is already in the database
     if user.id:
-        # User exists, so we might update their roles
-        # Clear existing groups if you want to synchronize roles each time
         user.groups.clear()
 
     # Assign new roles from Keycloak
@@ -29,6 +26,10 @@ def handle_keycloak_roles(sender, request, sociallogin, **kwargs):
         group, _ = Group.objects.get_or_create(name=role_name)
         user.groups.add(group)
 
+    if 'admin' in keycloak_groups:
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -7,12 +7,13 @@
     {% if user.is_authenticated %}
         <p><strong>Username:</strong> {{ user.username }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
-        {% if user.info %}
-            <p><strong>Roles:</strong> {{ user.info.roles }}</p>
-            <!-- Display any other information from UserInformation model -->
-        {% else %}
-            <p>No additional information available.</p>
-        {% endif %}
+        {% comment %} print all user groups {% endcomment %}
+        <p><strong>Groups:</strong> {{ user.groups.all }}</p>
+
+        {% comment %} Add a link to the "test_auth_view" with a comment that it should only work if the group "user_intern" is available {% endcomment %}
+        <a href="{% url 'test_auth_view' %}">Test Auth View</a>
+
+    
     {% else %}
         <p>You are not logged in.</p>
     {% endif %}
