@@ -52,7 +52,7 @@
           devShell."${system}" = pkgs.mkShell {
             buildInputs = [ 
               # env
-              pkgs.poetry
+              # pkgs.poetry
 
               # Make venv (not very nixy but easy workaround to use current non-nix-packaged python module)
               pkgs.python3Packages.venvShellHook
