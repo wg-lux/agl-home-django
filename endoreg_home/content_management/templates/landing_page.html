@@ -1,11 +1,9 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
+{% load static %}
 {% load django_bootstrap5 %}
-
 {% block content %}
 <!-- Header Section -->
-{% comment %} <div class="p-5 text-center bg-image" style="background-image: url('{% static 'images/healthcare-technology-background.jpg' %}'); height: 400px;"> {% endcomment %}
-<div class="p-5 text-center bg-image" style="height: 400px;">
+<div class="p-5 text-center bg-image" style="background-image: url('{% static 'images/banner.webp' %}'); height: 400px;">
         <div class="d-flex justify-content-center align-items-center h-100">
         <div class="text-white">
             <h1 class="mb-3">Innovating GI Endoscopy Through Digitalization</h1>
@@ -29,15 +27,15 @@
     <div class="row">
         <!-- Icons or small graphics representing technology, healthcare, and patient care -->
         <div class="col-md-4 text-center">
-            {% comment %} <img src="{% static 'icons/technology-icon.jpg' %}" class="img-fluid" alt="Technology Icon"> {% endcomment %}
+            <img src="{% static 'images/ai_icon_detailed.webp' %}" class="img-fluid" alt="Technology Icon" width="100%" height="auto">
             <p class="mt-2">Technology Integration</p>
         </div>
         <div class="col-md-4 text-center">
-            {% comment %} <img src="{% static 'icons/healthcare-icon.jpg' %}" class="img-fluid" alt="Healthcare Icon"> {% endcomment %}
+            <img src="{% static 'images/connected-healthcare-icon-detailed.webp' %}" class="img-fluid" alt="Healthcare Icon" width="100%" height="auto">
             <p class="mt-2">Enhanced Healthcare</p>
         </div>
         <div class="col-md-4 text-center">
-            {% comment %} <img src="{% static 'icons/patient-care-icon.jpg' %}" class="img-fluid" alt="Patient Care Icon"> {% endcomment %}
+            <img src="{% static 'images/improved-patient-care-icon-detailed.webp' %}" class="img-fluid" alt="Patient Care Icon" width="100%" height="auto">
             <p class="mt-2">Improved Patient Care</p>
         </div>
     </div>
@@ -82,4 +80,4 @@
         <button type="submit" class="btn btn-primary">Sign Up Now</button>
     </form>
 </section>
-{% endblock %}
+{% endblock content %}

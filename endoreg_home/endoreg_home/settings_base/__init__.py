@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    "whitenoise.runserver_nostatic", # above staticfiles, useful for development
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     "rest_framework",
