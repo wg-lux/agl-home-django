@@ -72,13 +72,27 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1707824078,
+        "narHash": "sha256-Au3wLi2d06bU7TDvahP2jIEeKwmjAxKHqi8l2uiBkGA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "99d7b32e4cfdaf763d9335b4d9ecf4415cbdc405",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "poetry2nix": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nix-github-actions": "nix-github-actions",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs_2",
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix"
       },
@@ -91,17 +105,15 @@
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "poetry2nix",
-        "type": "github"
+        "id": "poetry2nix",
+        "type": "indirect"
       }
     },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
-        "poetry2nix": "poetry2nix",
-        "tennis-data": "tennis-data"
+        "poetry2nix": "poetry2nix"
       }
     },
     "systems": {
@@ -146,22 +158,6 @@
       "original": {
         "id": "systems",
         "type": "indirect"
-      }
-    },
-    "tennis-data": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1704102559,
-        "narHash": "sha256-rG2MmHts7n0y1VntILyfdg/VyKWfluYj8VFSGKv+C6E=",
-        "owner": "JeffSackmann",
-        "repo": "tennis_atp",
-        "rev": "6e08e55d53ff006629f01ca67bff06c37dc9cec4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "JeffSackmann",
-        "repo": "tennis_atp",
-        "type": "github"
       }
     },
     "treefmt-nix": {

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     "rest_framework",
     "django_bootstrap5",
+    "endoreg_db.apps.EndoregDbConfig",
 
     # django-allauth
     'allauth',

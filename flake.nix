@@ -3,91 +3,46 @@
   inputs = {
     # flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    poetry2nix = {
-      url = "github:nix-community/poetry2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    ##### ADD EXTERNAL DATA AS INPUTS #####
-    # Necesarry to link files in shellHook
-    tennis-data = {
-      url = "github:JeffSackmann/tennis_atp";
-      flake = false;
-    };
-    #######################################
 
   };
-
-
-
-  outputs = { self, nixpkgs, flake-utils, poetry2nix, tennis-data }:
+  outputs = { self, nixpkgs, flake-utils, poetry2nix }:
     # flake-utils.lib.eachDefaultSystem (system:
     let
         system = "x86_64-linux";
-        # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
         pkgs = nixpkgs.legacyPackages.${system};
-        
-        _poetry2nix = poetry2nix.lib.mkPoetry2Nix { inherit pkgs; };
 
     in
-      # let 
-      #   env = _poetry2nix.mkPoetryEnv {
-      #     projectDir = ./.;
-
-      #     overrides = _poetry2nix.defaultPoetryOverrides.extend
-      #       (self: super: {
-      #         pandas = super.pandas.overridePythonAttrs
-      #         (
-      #           old: {
-      #             buildInputs = (old.buildInputs or [ ]) ++ [ super.setuptools ];
-      #           }
-      #         );
-      #     });
-
-      #   };
-      # in
         {
 
           # Call with nix develop
           devShell."${system}" = pkgs.mkShell {
             buildInputs = [ 
-              # env
-              # pkgs.poetry
-
-              # Make venv (not very nixy but easy workaround to use current non-nix-packaged python module)
-              pkgs.python3Packages.venvShellHook
+              pkgs.python311
+              pkgs.python311Packages.pip
+              pkgs.python311Packages.virtualenv
+              # pkgs.python3Packages.venvShellHook
             ];
 
             # Define Environment Variables
             TEST_VAR = "test";
-            DJANGO_SETTINGS_MODULE="endoreg_home.settings_dev";
 
-            # Setup external datasources
-            # shellHook = ''
-            # '';
+            shellHook = ''
+            source .venv/bin/activate
 
-            # Define Python venv
-            venvDir = ".venv";
-            postShellHook = ''
-              mkdir -p data
-              ln -snf ${tennis-data}/atp_matches_2020.csv data/dataset.csv
+            export DJANGO_SETTINGS_MODULE=endoreg_home.settings_prod
+            export DJANGO_SECRET_KEY=$(cat .env/secret)
+            export KEYCLOAK_CLIENT=$(cat .env/keycloak-client)
+            export KEYCLOAK_SECRET=$(cat .env/keycloak-secret)
 
-              pip install --upgrade pip
-              poetry update
-
-              export DJANGO_SECRET_KEY=$(cat .env/secret)
-              export KEYCLOAK_CLIENT=$(cat .env/keycloak-client)
-              export KEYCLOAK_SECRET=$(cat .env/keycloak-secret)
-
-              # print out the environment variables
-              echo "DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY"
-              echo "KEYCLOAK_CLIENT: $KEYCLOAK_CLIENT"
-              echo "KEYCLOAK_SECRET: $KEYCLOAK_SECRET"
-
+            # print out the environment variables
+            echo "DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY"
+            echo "KEYCLOAK_CLIENT: $KEYCLOAK_CLIENT"
+            echo "KEYCLOAK_SECRET: $KEYCLOAK_SECRET"
+            
+            mkdir -p data
             '';
+
           };
 
-
-        # });
         };
 }
