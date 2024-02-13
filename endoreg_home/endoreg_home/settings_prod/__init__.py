@@ -2,7 +2,7 @@ from ..settings_base import *
 import os
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'default_secret_key')
 print(f"CHECK SECRET KEYYYY: {SECRET_KEY}")
 
 DEBUG = False
@@ -34,7 +34,4 @@ DATABASES = {
     }
 }
 
-# Static files (CSS, JavaScript, Images)
-STATIC_ROOT = '/path/to/static/files'
 
-# SSL/HTTPS settings here if needed
