@@ -27,7 +27,7 @@
             ];
 
             # Define Environment Variables
-            DJANGO_SETTINGS_MODULE="endoreg_client_manager.settings";
+            DJANGO_SETTINGS_MODULE="endoreg_home.settings_prod";
 
             # Define Python venv
             venvDir = ".venv";
