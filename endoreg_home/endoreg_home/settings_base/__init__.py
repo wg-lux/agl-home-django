@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from .static import STATIC_URL, STATIC_ROOT
+from .static import STATIC_URL, STATIC_ROOT, STORAGES
 from .internationalization import LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ
 from .logging_conf import LOGGING
 from .oauth import *
