@@ -4,8 +4,10 @@ nix-agl-home-django/*
 data/
 *decrypted~*
 result/*
-endoreg_home/user_authentication/migrations/
+# endoreg_home/user_authentication/migrations/
 endoreg_home/staticfiles
+endoreg_home/endoreg_home/staticfiles
+
 
 
 # Byte-compiled / optimized / DLL files
