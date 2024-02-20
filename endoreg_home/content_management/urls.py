@@ -9,7 +9,13 @@ urlpatterns = [
     path("about/about-us/", views.about_us, name="about_us"),
     path("about/privacy/", views.privacy, name="privacy"),
 
-    path("coloreg/security-concept/", views.coloreg_security_concept, name="coloreg_security_concept"),
+    # ColoReg
+    ## Study Information
+    path("coloreg/instructions/summary/", views.coloreg_instructions_summary, name="coloreg_instructions_summary"),
+
+    ## IT Security
+    path("coloreg/security/concept/", views.coloreg_security_concept, name="coloreg_security_concept"),
+    path("coloreg/security/study-hdd/", views.coloreg_security_study_hdd, name="coloreg_security_study-hdd"),
 ]
 
 

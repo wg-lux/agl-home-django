@@ -12,6 +12,7 @@
     <section class="mb-5">
         <h2 class="mb-3">Study Center Laptop</h2>
         <p>Scope: The study center laptop serves as a crucial interface for researchers, designed to handle sensitive healthcare information with the utmost security. By processing data temporarily and preventing permanent storage, we mitigate the risk of long-term data exposure. The use of study-specific software on these laptops ensures that only necessary data is processed and that it is done within a controlled environment, minimizing the chances of data leakage or unauthorized access.</p>
+        
     </section>
     
     <section class="mb-5">
@@ -20,8 +21,8 @@
     </section>
     
     <section class="mb-5">
-        <h2 class="mb-3">SSD Encryption</h2>
-        <p>Summary: Implementing SSD encryption via LUKS is a cornerstone of our strategy to protect data at rest. This approach ensures that if a device were to be lost or stolen, the data it contains would remain encrypted and inaccessible without the correct authentication key. By requiring password authentication, we add an additional layer of security, significantly reducing the risk of data breaches. Regular data cleanup routines further enhance our security posture by ensuring that sensitive information is not inadvertently stored longer than necessary, thus minimizing exposure to potential data theft or unauthorized access.</p>
+        <h2 class="mb-3">Encryption</h2>
+        <p>Summary: Implementing encryption via LUKS is a cornerstone of our strategy to protect data at rest. This approach ensures that if a device were to be lost or stolen, the data it contains would remain encrypted and inaccessible without the correct authentication key. By requiring password authentication, we add an additional layer of security, significantly reducing the risk of data breaches. Regular data cleanup routines further enhance our security posture by ensuring that sensitive information is not inadvertently stored longer than necessary, thus minimizing exposure to potential data theft or unauthorized access.</p>
     </section>
     
     <section class="mb-5">
@@ -41,8 +42,9 @@
     </section>
     
     <section class="mb-5">
-        <h2 class="mb-3">Study Data HDD</h2>
-        <p>Summary: The Study Data HDD is entrusted with the long-term storage of research data, operating under stringent data storage policies. By automating the pseudonymization of raw data, we significantly reduce the risk associated with manual data handling and ensure that sensitive information is anonymized effectively. This data is stored temporarily until verification, limiting exposure and enhancing data security. Our approach to data storage is designed with the flexibility to accommodate participant consent withdrawal and data re-integration, ensuring compliance with ethical guidelines and regulatory standards.</p>
+        <h2 class="mb-3">Study Data Harddrive</h2>
+        <p>Summary: The Study Data HDD is entrusted with the storage of research data, operating under stringent data storage policies. By automating the pseudonymization of raw data, we significantly reduce the risk associated with manual data handling and ensure that sensitive information is anonymized effectively. This data is stored temporarily until verification, limiting exposure and enhancing data security. Our approach to data storage is designed with the flexibility to accommodate participant consent withdrawal and data re-integration, ensuring compliance with ethical guidelines and regulatory standards.</p>
+        <a href="{% url 'coloreg_security_study-hdd' %}">Learn more</a>
     </section>
     
     <section>

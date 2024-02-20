@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 from django.http import HttpResponse
 
 
@@ -22,7 +22,7 @@ def test_auth_view(request):
     return HttpResponse('This is a protected view')
 
 
-# @login_required
+@login_required
 def user_status(request):
     user = request.user
 

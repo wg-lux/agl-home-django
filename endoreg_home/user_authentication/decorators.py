@@ -3,7 +3,7 @@ from django.http import HttpResponseForbidden
 def keycloak_role_required(role):
     def decorator(view_func):
         def _wrapped_view(request, *args, **kwargs):
-            if role in request.user.userprofile.keycloak_roles:
+            if request.user.groups.filter(name=role).exists():
                 return view_func(request, *args, **kwargs)
             return HttpResponseForbidden()
         return _wrapped_view

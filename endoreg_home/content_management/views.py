@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from user_authentication.decorators import keycloak_role_required
 
 
 # Create your views here.
@@ -21,5 +22,14 @@ def about_us(request):
 def privacy(request):
     return render(request, "about/privacy.html")
 
+@keycloak_role_required('coloreg-user')
+def coloreg_instructions_summary(request):
+    return render(request, "coloreg/instructions/summary.html")
+
+@keycloak_role_required('coloreg-user')
 def coloreg_security_concept(request):
-    return render(request, "coloreg/security_concept.html")
+    return render(request, "coloreg/security/concept.html")
+
+@keycloak_role_required('coloreg-user')
+def coloreg_security_study_hdd(request):
+    return render(request, "coloreg/security/study-hdd.html")
