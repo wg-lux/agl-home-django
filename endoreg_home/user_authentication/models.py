@@ -2,6 +2,7 @@ from django.contrib.auth.models import User, Group
 from django.db import models
 from allauth.account.signals import user_logged_in
 from django.dispatch import receiver
+from django.db import transaction
 
 from allauth.socialaccount.signals import pre_social_login
 
@@ -18,8 +19,24 @@ def handle_keycloak_roles(sender, request, sociallogin, **kwargs):
     
     user = sociallogin.user
 
-    if user.id:
-        user.groups.clear()
+    # check if user is already in the database by username
+    # if already available, we need to assign the correct id to the user object
+
+    if not user.id:
+        with transaction.atomic():
+            # check for existing user:
+            existing_user = User.objects.filter(username=user.username).first()
+            
+            if existing_user:
+                user.id = existing_user.id
+
+            # Set a basic field to trigger save
+            logger = logging.getLogger("authentication")
+            logger.debug(f"Creating user {user.username}")
+            user.save()  # This ensures the user has an ID for many-to-many relationships
+
+            logger.debug(f"Saved user {user.username} with id {user.id}")
+            logger.debug(f"sociallogin.account.extra_data: {sociallogin.account.extra_data.get('groups', [])}")
 
     # Assign new roles from Keycloak
     for role_name in keycloak_groups:

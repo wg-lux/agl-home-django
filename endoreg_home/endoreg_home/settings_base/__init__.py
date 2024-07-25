@@ -21,12 +21,12 @@ from .cookiebanner import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 WSGI_APPLICATION = 'endoreg_home.wsgi.application'
 SITE_ID = 1
 
+DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -68,9 +68,7 @@ MIDDLEWARE = [ # MIDDLEWARE ORDER IS RELEVANT
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     "allauth.account.middleware.AccountMiddleware",
 ]
 

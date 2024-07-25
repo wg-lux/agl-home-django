@@ -9,9 +9,7 @@ CLIENT_SECRET = os.environ.get('KEYCLOAK_SECRET', 'such-secrecy-wooooow') #TODO 
 
 
 AUTHENTICATION_BACKENDS = [
-    # ...
     'allauth.account.auth_backends.AuthenticationBackend',
-    # ...
 ]
 
 USERSESSIONS_TRACK_ACTIVITY = True # Requires allauth.usersessions.middleware.UserSessionsMiddleware
@@ -39,28 +37,3 @@ SOCIALACCOUNT_PROVIDERS = {
 LOGIN_REDIRECT_URL = "landing_page"
 LOGOUT_REDIRECT_URL = "landing_page"
 
-
-
-# def getGroups():
-#     groups = os.environ.get(
-#         "KEYCLOAK_GROUPS",
-#         {
-#             "GROUP_TO_FLAG_MAPPING": {
-#                 "is_staff": ["Django Staff", "django-admin-role"],
-#                 "is_superuser": "django-admin-role",
-#             },
-#             "GROUPS_MAPPING": {
-#                 # "django-admin-role": "django-admin-group",
-#                 "django-admin-role": None,
-#                 "offline_access": None,
-#             },
-#             "GROUPS_AUTO_CREATE": True,
-#         },
-#     )
-
-#     print(groups)
-
-#     if isinstance(groups, str):
-#         groups = json.loads(groups)
-
-#     return groups
