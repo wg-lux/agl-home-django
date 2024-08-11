@@ -19,6 +19,7 @@ from django.urls import path, include
 
 from content_management.urls import urlpatterns as content_management_urls
 from user_authentication.urls import urlpatterns as user_authentication_urls
+from monitoring.urls import urlpatterns as monitoring_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,3 +28,4 @@ urlpatterns = [
 
 urlpatterns += content_management_urls
 urlpatterns += user_authentication_urls
+urlpatterns += monitoring_urls

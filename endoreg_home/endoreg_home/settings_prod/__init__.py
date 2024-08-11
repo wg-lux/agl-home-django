@@ -10,7 +10,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "home.endo-reg.net",
-    "*.endo-reg.net"
+    "*.endo-reg.net",
+    # "172.16.255.4"
 ]
 
 SECURE_SSL_REDIRECT = True

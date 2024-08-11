@@ -16,6 +16,7 @@ from .internationalization import LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ
 from .logging_conf import LOGGING
 from .oauth import *
 from .cookiebanner import *
+from .celery import *
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -56,6 +57,12 @@ INSTALLED_APPS = [
 
     "user_authentication.apps.UserAuthenticationConfig",
     "content_management.apps.ContentManagementConfig",
+
+    # Tasks
+    "django_redis",
+    "django_celery_beat",
+    "django_celery_results",
+    "celery",
 
 ]
 
