@@ -4,13 +4,8 @@ from django.contrib.auth.decorators import user_passes_test, login_required
 from django.http import HttpResponse
 
 
-# Create a logger for your OIDC backend
-# Create your views here.
-KEYCLOAK_BASE_URL = 'https://keycloak.endo-reg.net/realms/master/protocol/openid-connect'
-ENDOREG_HOME_URL = 'https://home.endo-reg.net'
-
-# KEYCLOAK_BASE_URL = settings.KEYCLOAK_BASE_URL
-# ENDOREG_HOME_URL = settings.ENDOREG_HOME_URL
+KEYCLOAK_BASE_URL = settings.KEYCLOAK_REALM_BASE_URL
+HOME_URL = settings.HOME_URL
 
 
 def in_specific_group(user):
@@ -38,5 +33,5 @@ def redirect_after_logout(request):
 
     # Redirect to your app's landing page
 
-    return redirect(ENDOREG_HOME_URL)
+    return redirect(HOME_URL)
         

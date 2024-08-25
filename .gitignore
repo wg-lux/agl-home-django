@@ -7,7 +7,7 @@ result/*
 # endoreg_home/user_authentication/migrations/
 endoreg_home/staticfiles
 endoreg_home/endoreg_home/staticfiles
-
+*/celery_log.log*
 
 
 # Byte-compiled / optimized / DLL files
