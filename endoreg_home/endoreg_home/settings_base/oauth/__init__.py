@@ -1,7 +1,7 @@
 import os
 import json
 from .django_settings import *
-from ..base_urls import KEYCLOAK_BASE_URL, KEYCLOAK_REALM_BASE_URL, ENDOREG_HOME_URL
+from ..base_urls import KEYCLOAK_BASE_URL, KEYCLOAK_REALM_BASE_URL
 
 # Get environment variables
 CLIENT_ID = os.environ.get('KEYCLOAK_CLIENT', 'test_client')
