@@ -2,7 +2,7 @@
 import json
 from celery.signals import after_setup_logger
 
-agl_home_django_path = "/etc/agl-home-django-config/agl-home-django.json"
+agl_home_django_path = "/etc/agl-home-django/config.json"
 
 with open(agl_home_django_path) as f:
     agl_home_django_config = json.load(f)
