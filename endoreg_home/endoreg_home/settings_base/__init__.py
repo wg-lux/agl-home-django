@@ -17,6 +17,7 @@ from .logging_conf import LOGGING
 from .oauth import *
 from .cookiebanner import *
 from .celery import *
+from .base_urls import *
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
