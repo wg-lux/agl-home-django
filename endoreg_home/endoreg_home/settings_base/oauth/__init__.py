@@ -18,6 +18,10 @@ try:
     with open(CLIENT_SECRET_PATH, 'r') as f:
         CLIENT_SECRET = f.read().strip()
 
+    with open("test-log.txt", "a") as f:
+        f.write(f"CLIENT_ID: {CLIENT_ID}\n")
+        f.write(f"CLIENT_SECRET: {CLIENT_SECRET}\n")
+
 except FileNotFoundError:
     CLIENT_ID = os.environ.get('KEYCLOAK_CLIENT', 'test_client')
     CLIENT_SECRET = os.environ.get('KEYCLOAK_SECRET', 'such-secrecy-wooooow') #TODO make
