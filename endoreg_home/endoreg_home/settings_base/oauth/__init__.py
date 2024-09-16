@@ -4,9 +4,11 @@ from .django_settings import *
 from ..base_urls import KEYCLOAK_BASE_URL, KEYCLOAK_REALM_BASE_URL
 
 # Get environment variables
+
+keycloak_client_id_file = "/home/agl-admin/agl-home-django/.env/"
+
 CLIENT_ID = os.environ.get('KEYCLOAK_CLIENT', 'test_client')
 CLIENT_SECRET = os.environ.get('KEYCLOAK_SECRET', 'such-secrecy-wooooow') #TODO make
-
 
 AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
