@@ -8,9 +8,9 @@ from ..base_urls import KEYCLOAK_BASE_URL, KEYCLOAK_REALM_BASE_URL
 CLIENT_ID_PATH = os.environ.get('KEYCLOAK_CLIENT_PATH', 'keycloak_client_id')
 CLIENT_SECRET_PATH = os.environ.get('KEYCLOAK_SECRET_PATH', 'keycloak_client_secret')
 
-with open("test-log.txt", "w") as f:
-    f.write(f"CLIENT_ID_PATH: {CLIENT_ID_PATH}\n")
-    f.write(f"CLIENT_SECRET_PATH: {CLIENT_SECRET_PATH}\n")
+# with open("test-log.txt", "w") as f:
+#     f.write(f"CLIENT_ID_PATH: {CLIENT_ID_PATH}\n")
+#     f.write(f"CLIENT_SECRET_PATH: {CLIENT_SECRET_PATH}\n")
 
 try:
     with open(CLIENT_ID_PATH, 'r') as f:
@@ -18,9 +18,9 @@ try:
     with open(CLIENT_SECRET_PATH, 'r') as f:
         CLIENT_SECRET = f.read().strip()
 
-    with open("test-log.txt", "a") as f:
-        f.write(f"CLIENT_ID: {CLIENT_ID}\n")
-        f.write(f"CLIENT_SECRET: {CLIENT_SECRET}\n")
+    # with open("test-log.txt", "a") as f:
+    #     f.write(f"CLIENT_ID: {CLIENT_ID}\n")
+    #     f.write(f"CLIENT_SECRET: {CLIENT_SECRET}\n")
 
 except FileNotFoundError:
     CLIENT_ID = os.environ.get('KEYCLOAK_CLIENT', 'test_client')
