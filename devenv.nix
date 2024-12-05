@@ -13,7 +13,7 @@
     buildInputs = with pkgs; [
       python312Full
       stdenv.cc.cc
-    ]
+    ];
 
   in {
       packages = with pkgs;  [
