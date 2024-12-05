@@ -2,7 +2,7 @@
 name = "agl-home-django"
 version = "0.1.0"
 description = ""
-authors = ["Thomas J. Lux"]
+authors = ["Thomas J. Lux", "Max Hild"]
 license = "GNU 3"
 readme = "README.md"
 
@@ -27,9 +27,5 @@ celery = "^5.4.0"
 django-celery-results = "^2.5.1"
 flower = "^2.0.1"
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-# pip install django==4.2 gunicorn django-bootstrap5 djangorestframework django-allauth django-cookiebanner whitenoise numpy
-# pip install -e ../endoreg-db/
+[tool.setuptools]
+packages = ["devenv_deployment"]
