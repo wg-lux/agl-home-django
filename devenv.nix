@@ -24,11 +24,11 @@
         };
       };
 
-      scripts.hello.exec = "${pkgs.uv}/bin/uv" run python helo.py;
+      scripts.hello.exec = "${pkgs.uv}/bin/uv run python hello.py";
       scripts.run-dev-server.exec = 
-      "${pkgs.uv}/bin/uv" run python manage.py runserver;
+      "${pkgs.uv}/bin/uv run python manage.py runserver";
       scripts.run-prod-server.exec =
-      "${pkgs.uv}/bin/uv" run gunicorn "endoreg_home.asgi:application";
+      "${pkgs.uv}/bin/uv run gunicorn endoreg_home.asgi:application";
         tasks = {
     "deploy:make-migrations".exec = "${pkgs.uv}/bin/uv run python manage.py makemigrations";
     "deploy:migrate".exec = "${pkgs.uv}/bin/uv run python manage.py migrate";
@@ -56,6 +56,5 @@
     echo "DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY"
     echo "KEYCLOAK_CLIENT: $KEYCLOAK_CLIENT"
     echo "KEYCLOAK_SECRET: $KEYCLOAK_SECRET"
-  '';
-};
+ '';
 }
