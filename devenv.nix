@@ -1,13 +1,4 @@
-{
-  description = "Django development environment using devenv";
-
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    flake-utils.url = "github:numtide/flake-utils";
-    devenv.url = "github:cachix/devenv";
-  };
-
-  outputs = { self, nixpkgs, flake-utils, devenv, ... }:
+{ pkgs, lib, config, inputs, ... }:
 
   let
     buildInputs = with pkgs; [
