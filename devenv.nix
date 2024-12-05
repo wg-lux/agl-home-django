@@ -7,50 +7,64 @@
     devenv.url = "github:cachix/devenv";
   };
 
-  outputs = { self, nixpkgs, flake-utils, devenv, ... }: devenv.lib.mkFlake {
-    systems = ["x86_64-linux", "x86_64-darwin"];
+  outputs = { self, nixpkgs, flake-utils, devenv, ... }:
 
-    devShells = { system, ... }: let
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
+  let
+    buildInputs = with pkgs; [
+      python312Full
+      stdenv.cc.cc
+    ]
+
+  in {
+      packages = with pkgs;  [
+
+      ];
+      env = {
+        LD_LIBRARY_PATH = "${
+        with pkgs;
+        lib.makeLibraryPath buildInputs
+        }:/run/opengl-driver/lib:/run/opengl-driver-64/lib";
       };
-    in {
-      default = {
-        packages = [
-          pkgs.poetry
-          pkgs.libGLU pkgs.libGL pkgs.libgcc pkgs.gcc
-          pkgs.xorg.libXi pkgs.xorg.libXmu pkgs.freeglut
-          pkgs.xorg.libXext pkgs.xorg.libX11 pkgs.xorg.libXv pkgs.xorg.libXrandr
-          pkgs.zlib pkgs.ncurses5 pkgs.stdenv.cc pkgs.binutils
-          pkgs.python311
-          pkgs.python311Packages.pandas
-          pkgs.python311Packages.numpy
-        ];
-
-        shell = {
-          preShell = ''
-            mkdir -p data
-          '';
-          postShell = ''
-            export DJANGO_SETTINGS_MODULE=endoreg_home.settings_prod
-            export DJANGO_SECRET_KEY=$(cat .env/secret)
-            export KEYCLOAK_CLIENT=$(cat .env/keycloak-client)
-            export KEYCLOAK_SECRET=$(cat .env/keycloak-secret)
-            echo "DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY"
-            echo "KEYCLOAK_CLIENT: $KEYCLOAK_CLIENT"
-            echo "KEYCLOAK_SECRET: $KEYCLOAK_SECRET"
-          '';
-          environmentVariables = {
-            DJANGO_SETTINGS_MODULE = "endoreg_home.settings_prod";
-          };
-        };
-
-        python = {
-          venvDir = ".venv";
-          venvEnabled = true;
+      languages.python = {
+        enable = true;
+        uv = {
+          enable = true;
+          sync.enable= true;
         };
       };
-    };
+
+      scripts.hello.exec = "${pkgs.uv}/bin/uv" run python helo.py;
+      scripts.run-dev-server.exec = 
+      "${pkgs.uv}/bin/uv" run python manage.py runserver;
+      scripts.run-prod-server.exec =
+      "${pkgs.uv}/bin/uv" run gunicorn endoreg_home.asgi:application;
+        tasks = {
+    "deploy:make-migrations".exec = "${pkgs.uv}/bin/uv run python manage.py makemigrations";
+    "deploy:migrate".exec = "${pkgs.uv}/bin/uv run python manage.py migrate";
+    "deploy:load-base-db-data".exec = "${pkgs.uv}/bin/uv run python manage.py load_base_db_data";
+    
+    "dev:runserver".exec = "${pkgs.uv}/bin/uv run python manage.py runserver";
+    "prod:runserver".exec = "${pkgs.uv}/bin/uv run daphne devenv_deployment.asgi:application";
   };
+
+  processes = {
+    silly-example.exec = "while true; do echo hello && sleep 1; done";
+    ping.exec = "ping localhost";
+    nvidia.exec = "nvidia-smi -l";
+    django.exec = "run-prod-server";
+  };
+
+  enterShell = ''
+    mkdir -p data
+    . .devenv/state/venv/bin/activate
+    nvcc -V
+    export DJANGO_SETTINGS_MODULE=endoreg_home.settings_prod
+    export DJANGO_SECRET_KEY=$(cat .env/secret)
+    export KEYCLOAK_CLIENT=$(cat .env/keycloak-client)
+    export KEYCLOAK_SECRET=$(cat .env/keycloak-secret)
+    echo "DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY"
+    echo "KEYCLOAK_CLIENT: $KEYCLOAK_CLIENT"
+    echo "KEYCLOAK_SECRET: $KEYCLOAK_SECRET"
+  '';
+};
 }
